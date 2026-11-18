@@ -1,6 +1,6 @@
 #define MyAppName "aarideev | SunoSync"
 #ifndef MyAppVersion
-#define MyAppVersion "0.3.7"
+#define MyAppVersion "0.3.8"
 #endif
 #define MyAppPublisher "aarideev"
 #define MyAppExeName "ArideevSunoPresence.exe"
