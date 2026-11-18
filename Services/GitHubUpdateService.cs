@@ -77,8 +77,9 @@ public sealed class GitHubUpdateService
         try
         {
             await DownloadInstallerAsync(installerUri, temporaryPath, cancellationToken);
-            await using var file = File.OpenRead(temporaryPath);
-            var actualHash = Convert.ToHexString(await SHA256.HashDataAsync(file, cancellationToken));
+            string actualHash;
+            await using (var file = File.OpenRead(temporaryPath))
+                actualHash = Convert.ToHexString(await SHA256.HashDataAsync(file, cancellationToken));
             if (!string.Equals(actualHash, expectedHash, StringComparison.OrdinalIgnoreCase))
                 throw new InvalidDataException("La verificación SHA-256 del instalador ha fallado.");
             File.Move(temporaryPath, installerPath, overwrite: true);

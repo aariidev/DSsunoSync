@@ -102,7 +102,7 @@
    </Border>
   </Grid>
   <DockPanel Grid.Row="2" Margin="30,0,30,13">
-   <TextBlock Text="aarideev  /  SUNOSYNC  /  0.3.6" Foreground="#666A73" FontSize="10"/>
+   <TextBlock Text="aarideev  /  SUNOSYNC  /  0.3.7" Foreground="#666A73" FontSize="10"/>
    <TextBlock x:Name="LogText" Text="Preparado." Foreground="#9296A0" FontSize="10" DockPanel.Dock="Right"/>
   </DockPanel>
  </Grid>
