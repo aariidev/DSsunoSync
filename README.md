@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-4C8BF5?logo=windows" alt="Windows 10 y 11">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet" alt=".NET 10">
   <img src="https://img.shields.io/badge/Brave%20%7C%20Chrome%20%7C%20Edge-MV3-FB542B?logo=googlechrome" alt="Brave, Chrome y Edge">
-  <img src="https://img.shields.io/badge/Release-v0.3.4-E34A5E" alt="Release 0.3.4">
+  <img src="https://img.shields.io/badge/Release-v0.3.5-E34A5E" alt="Release 0.3.5">
 </p>
 
 ---
@@ -82,8 +82,8 @@ El ejecutable aparece en `publish\ArideevSunoPresence.exe`; el instalador, en `d
 Actualiza el mismo número de versión en el proyecto y en el manifiesto de la extensión. Después, crea y sube una etiqueta `vX.Y.Z`; GitHub Actions compilará y publicará el instalador y su checksum SHA-256.
 
 ```powershell
-git tag v0.3.4
-git push origin v0.3.4
+git tag v0.3.5
+git push origin v0.3.5
 ```
 
 ---
@@ -107,5 +107,5 @@ El puente solo escucha en loopback. La extensión envía los metadatos de reprod
 ---
 
 <p align="center">
-  <sub>Hecho con ♥ por aarideev · SunoSync 0.3.4</sub>
+  <sub>Hecho con ♥ por aarideev · SunoSync 0.3.5</sub>
 </p>

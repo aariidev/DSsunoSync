@@ -1,7 +1,7 @@
 <Window x:Class="ArideevSunoPresence.MainWindow"
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
- Title="aarideev | SunoSync" Icon="pack://application:,,,/Assets/Arideev.ico" Height="760" Width="1180"
+ Title="aarideev | SunoSync" Icon="pack://application:,,,/Assets/Arideev.png" Height="760" Width="1180"
  MinHeight="680" MinWidth="1000" WindowStartupLocation="CenterScreen"
  Background="#0B0D12" Foreground="#F4F4F6">
  <Grid>
@@ -102,7 +102,7 @@
    </Border>
   </Grid>
   <DockPanel Grid.Row="2" Margin="30,0,30,13">
-   <TextBlock Text="aarideev  /  SUNOSYNC  /  0.3.3" Foreground="#666A73" FontSize="10"/>
+   <TextBlock Text="aarideev  /  SUNOSYNC  /  0.3.5" Foreground="#666A73" FontSize="10"/>
    <TextBlock x:Name="LogText" Text="Preparado." Foreground="#9296A0" FontSize="10" DockPanel.Dock="Right"/>
   </DockPanel>
  </Grid>
