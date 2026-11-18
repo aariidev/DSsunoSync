@@ -110,8 +110,8 @@ public sealed class LocalBridge : IDisposable
                     var healthJson = JsonSerializer.Serialize(new
                     {
                         ok = true,
-                        service = "Arideev Suno Presence",
-                        version = "0.3.0"
+                        service = "aarideev | SunoSync",
+                        version = "0.3.1"
                     });
                     await WriteResponseAsync(stream, 200, "OK", healthJson,
                         corsHeaders, cancellationToken).ConfigureAwait(false);

@@ -110,7 +110,7 @@ public partial class MainWindow : Window
     private void InitializeTray()
     {
         var menu = new Forms.ContextMenuStrip();
-        menu.Items.Add("Abrir Arideev Suno Presence", null, (_, _) => Dispatcher.BeginInvoke(new Action(ShowFromTray)));
+        menu.Items.Add("Abrir aarideev | SunoSync", null, (_, _) => Dispatcher.BeginInvoke(new Action(ShowFromTray)));
         menu.Items.Add(new Forms.ToolStripSeparator());
         _trayPresenceItem = new Forms.ToolStripMenuItem("Rich Presence activado", null, (_, _) => Dispatcher.BeginInvoke(new Action(() =>
         {
@@ -129,7 +129,7 @@ public partial class MainWindow : Window
         _tray = new Forms.NotifyIcon
         {
             Icon = _trayAppIcon,
-            Text = "Arideev Suno Presence",
+            Text = "aarideev | SunoSync",
             Visible = true,
             ContextMenuStrip = menu
         };
@@ -160,7 +160,7 @@ public partial class MainWindow : Window
             e.Cancel = true;
             Hide();
             ShowInTaskbar = false;
-            _tray?.ShowBalloonTip(1800, "Arideev Suno Presence", "La aplicación sigue activa en la bandeja del sistema.", Forms.ToolTipIcon.Info);
+            _tray?.ShowBalloonTip(1800, "aarideev | SunoSync", "La aplicación sigue activa en la bandeja del sistema.", Forms.ToolTipIcon.Info);
             return;
         }
         base.OnClosing(e);
@@ -457,7 +457,7 @@ public partial class MainWindow : Window
         try { SaveSettingsFromUi(); }
         catch (Exception ex)
         {
-            System.Windows.MessageBox.Show($"No se pudo guardar la configuración: {ex.Message}", "Arideev Suno Presence", MessageBoxButton.OK, MessageBoxImage.Error);
+            System.Windows.MessageBox.Show($"No se pudo guardar la configuración: {ex.Message}", "aarideev | SunoSync", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
         await _presence.ConfigureAsync(_settings.DiscordApplicationId, _settings.Enabled);
@@ -469,7 +469,7 @@ public partial class MainWindow : Window
         try { SaveSettingsFromUi(); }
         catch (Exception ex)
         {
-            System.Windows.MessageBox.Show($"No se pudo guardar la configuración: {ex.Message}", "Arideev Suno Presence", MessageBoxButton.OK, MessageBoxImage.Error);
+            System.Windows.MessageBox.Show($"No se pudo guardar la configuración: {ex.Message}", "aarideev | SunoSync", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
 
@@ -492,7 +492,7 @@ public partial class MainWindow : Window
     {
         if (!Directory.Exists(ExtensionPath))
         {
-            System.Windows.MessageBox.Show("No se encuentra la extensión extraída en AppData. Cierra y vuelve a abrir la aplicación para regenerarla.", "Arideev Suno Presence", MessageBoxButton.OK, MessageBoxImage.Warning);
+            System.Windows.MessageBox.Show("No se encuentra la extensión extraída en AppData. Cierra y vuelve a abrir la aplicación para regenerarla.", "aarideev | SunoSync", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
         Process.Start(new ProcessStartInfo("explorer.exe", ExtensionPath) { UseShellExecute = true });
@@ -530,7 +530,7 @@ public partial class MainWindow : Window
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show($"No se pudo iniciar la actualización: {ex.Message}", "Arideev Suno Presence", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show($"No se pudo iniciar la actualización: {ex.Message}", "aarideev | SunoSync", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         Close();

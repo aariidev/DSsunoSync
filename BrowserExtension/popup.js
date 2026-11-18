@@ -26,7 +26,7 @@ async function readLoopbackPermission() {
   const state = await readLoopbackPermission();
   permissionBox.textContent = `Permiso de red local: ${state}`;
   if (state === "granted") {
-    showStatus("Permiso concedido. Pulsa «Conectar» para comprobar que Arideev está abierto.", "ok");
+    showStatus("Permiso concedido. Pulsa «Conectar» para comprobar que SunoSync está abierto.", "ok");
   } else if (state === "denied") {
     showStatus("El navegador ha bloqueado el acceso local. Revisa los permisos de red local / loopback del navegador.", "bad");
   }
@@ -34,7 +34,7 @@ async function readLoopbackPermission() {
 
 connectButton.addEventListener("click", async () => {
   connectButton.disabled = true;
-  showStatus("Comprobando Arideev y solicitando acceso local si el navegador lo necesita…");
+  showStatus("Comprobando SunoSync y solicitando acceso local si el navegador lo necesita…");
   try {
     // This request is deliberately made from the popup's document and directly
     // inside the click handler. MV3 service workers cannot initiate the first
@@ -61,7 +61,7 @@ connectButton.addEventListener("click", async () => {
   } catch (error) {
     const message = String(error?.message || error);
     showStatus(
-      `No se pudo conectar con Arideev. Comprueba que la aplicación de Windows siga abierta. Si Chrome/Edge pregunta por acceso a la red local o loopback, pulsa «Permitir». Detalle: ${message}`,
+      `No se pudo conectar con SunoSync. Comprueba que la aplicación de Windows siga abierta. Si el navegador pregunta por acceso a la red local o loopback, pulsa «Permitir». Detalle: ${message}`,
       "bad"
     );
     const permissionState = await readLoopbackPermission();

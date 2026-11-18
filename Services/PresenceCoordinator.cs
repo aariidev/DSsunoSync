@@ -112,7 +112,7 @@ public sealed class PresenceCoordinator : IAsyncDisposable
             {
                 HasTrack = true,
                 Title = "Prueba de Rich Presence",
-                Artist = "Arideev Suno Presence",
+                Artist = "aarideev | SunoSync",
                 PageUrl = "https://suno.com",
                 IsPlaying = true,
                 PositionSeconds = 0,

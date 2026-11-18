@@ -12,7 +12,7 @@ $Dist = Join-Path $Root "dist"
 $projectXml = [xml](Get-Content -LiteralPath $Project -Raw)
 $appVersion = $projectXml.Project.PropertyGroup.Version
 if ([string]::IsNullOrWhiteSpace($appVersion)) {
-    throw "No se pudo leer la versión de ArideevSunoPresence.csproj."
+    throw "No se pudo leer la versión del proyecto SunoSync."
 }
 $extensionManifest = Get-Content -LiteralPath (Join-Path $Root "BrowserExtension\manifest.json") -Raw | ConvertFrom-Json
 if ($extensionManifest.version -ne $appVersion) {
@@ -37,7 +37,7 @@ New-Item -ItemType Directory -Path $Publish -Force | Out-Null
     -o $Publish
 if ($LASTEXITCODE -ne 0) { throw "dotnet publish failed with exit code $LASTEXITCODE" }
 
-Write-Host "EXE autónomo creado: $Publish\ArideevSunoPresence.exe" -ForegroundColor Green
+Write-Host "EXE autónomo de SunoSync creado: $Publish\ArideevSunoPresence.exe" -ForegroundColor Green
 Write-Host "La extensión está integrada en el EXE y se extrae en AppData al iniciar." -ForegroundColor Green
 
 if (-not $SkipInstaller) {

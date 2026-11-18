@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Arideev Suno Presence Connector",
-  "version": "0.3.0",
-  "description": "Conecta el reproductor de Suno con Arideev Suno Presence.",
+  "name": "aarideev | SunoSync Connector",
+  "version": "0.3.1",
+  "description": "Conecta el reproductor de Suno con aarideev | SunoSync.",
   "permissions": [],
   "host_permissions": [
     "https://suno.com/*",
@@ -37,7 +37,7 @@
     }
   ],
   "action": {
-    "default_title": "Conectar Arideev Suno Presence",
+    "default_title": "Conectar aarideev | SunoSync",
     "default_popup": "popup.html"
   }
 }

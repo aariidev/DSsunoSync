@@ -66,7 +66,7 @@ public sealed class DiscordRpcClient : IAsyncDisposable
 
     private static Dictionary<string, object?> BuildAssets(TrackInfo track)
     {
-        var assets = new Dictionary<string, object?> { ["large_text"] = "Suno · Arideev Suno Presence" };
+        var assets = new Dictionary<string, object?> { ["large_text"] = "Suno · aarideev | SunoSync" };
         // Discord accepts publicly reachable external HTTPS images for large_image.
         // Keep within a conservative URL length; an overlong CDN signature should not
         // prevent the text activity itself from being published.
