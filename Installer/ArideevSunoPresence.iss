@@ -1,6 +1,6 @@
 #define MyAppName "aarideev | SunoSync"
 #ifndef MyAppVersion
-#define MyAppVersion "0.3.3"
+#define MyAppVersion "0.3.4"
 #endif
 #define MyAppPublisher "aarideev"
 #define MyAppExeName "ArideevSunoPresence.exe"
@@ -11,7 +11,7 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 DefaultDirName={localappdata}\Programs\Arideev\Suno Presence
-DefaultGroupName={#MyAppName}
+DefaultGroupName=aarideev SunoSync
 UninstallDisplayIcon={app}\{#MyAppExeName}
 OutputDir=..\dist
 OutputBaseFilename=ArideevSunoPresence-Setup-x64-{#MyAppVersion}
@@ -30,8 +30,8 @@ Name: "desktopicon"; Description: "Crear acceso directo en el escritorio"; Group
 Source: "..\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\aarideev | SunoSync"; Filename: "{app}\{#MyAppExeName}"
-Name: "{autodesktop}\aarideev | SunoSync"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{group}\aarideev SunoSync"; Filename: "{app}\{#MyAppExeName}"
+Name: "{autodesktop}\aarideev SunoSync"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "Abrir aarideev | SunoSync"; Flags: postinstall nowait skipifsilent

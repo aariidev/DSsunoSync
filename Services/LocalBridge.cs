@@ -111,7 +111,7 @@ public sealed class LocalBridge : IDisposable
                     {
                         ok = true,
                         service = "aarideev | SunoSync",
-                        version = "0.3.3"
+                        version = "0.3.4"
                     });
                     await WriteResponseAsync(stream, 200, "OK", healthJson,
                         corsHeaders, cancellationToken).ConfigureAwait(false);
