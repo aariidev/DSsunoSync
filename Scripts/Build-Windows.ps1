@@ -41,10 +41,11 @@ Write-Host "EXE autónomo de SunoSync creado: $Publish\ArideevSunoPresence.exe" 
 Write-Host "La extensión está integrada en el EXE y se extrae en AppData al iniciar." -ForegroundColor Green
 
 if (-not $SkipInstaller) {
+    $programFilesX86 = [Environment]::GetEnvironmentVariable("ProgramFiles(x86)")
     $isccCandidates = @(
-        "$env:ProgramFiles(x86)\Inno Setup 6\ISCC.exe",
-        "$env:ProgramFiles\Inno Setup 6\ISCC.exe"
-    )
+        $(if ($programFilesX86) { Join-Path $programFilesX86 "Inno Setup 6\ISCC.exe" }),
+        $(if ($env:ProgramFiles) { Join-Path $env:ProgramFiles "Inno Setup 6\ISCC.exe" })
+    ) | Where-Object { $_ }
     $iscc = $isccCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1
     if (-not $iscc) {
         Write-Warning "No se encontró Inno Setup 6. El EXE autónomo sí está listo; instala Inno Setup 6 para crear el instalador."
