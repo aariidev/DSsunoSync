@@ -1,0 +1,53 @@
+name: Windows release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Validate release version
+        shell: pwsh
+        run: |
+          $tagVersion = $env:GITHUB_REF_NAME.TrimStart("v")
+          $project = [xml](Get-Content -LiteralPath ".\ArideevSunoPresence.csproj" -Raw)
+          if ($project.Project.PropertyGroup.Version -ne $tagVersion) {
+            throw "Release tag $tagVersion does not match project version $($project.Project.PropertyGroup.Version)."
+          }
+
+      - name: Install Inno Setup
+        run: choco install innosetup --yes --no-progress
+
+      - name: Build installer
+        shell: pwsh
+        run: .\Scripts\Build-Windows.ps1
+
+      - name: Create SHA-256 sidecar
+        shell: pwsh
+        run: |
+          $installer = Get-ChildItem -LiteralPath ".\dist" -Filter "*.exe" | Select-Object -First 1
+          if (-not $installer) { throw "Build did not produce an installer." }
+          $hash = (Get-FileHash -LiteralPath $installer.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+          Set-Content -LiteralPath ($installer.FullName + ".sha256") -Value "$hash  $($installer.Name)" -Encoding ascii
+
+      - name: Publish GitHub release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $assets = Get-ChildItem -LiteralPath ".\dist" -File |
+            Where-Object { $_.Name -match "\.exe(\.sha256)?$" } |
+            ForEach-Object { $_.FullName }
+          gh release create $env:GITHUB_REF_NAME $assets --verify-tag --title $env:GITHUB_REF_NAME --generate-notes

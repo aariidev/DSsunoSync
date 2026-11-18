@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arideev Suno Presence</title>
+  <style>
+    :root { color-scheme: dark; font-family: "Segoe UI", Arial, sans-serif; }
+    body { width: 310px; margin: 0; padding: 18px; color: #f4f0ff; background: #100d19; }
+    .brand { color: #b69aff; font-weight: 700; letter-spacing: .14em; font-size: 11px; }
+    h1 { font-size: 19px; margin: 5px 0 8px; font-weight: 650; }
+    p { margin: 0 0 14px; color: #b9b1ca; line-height: 1.45; font-size: 12px; }
+    button { width: 100%; border: 0; border-radius: 9px; padding: 11px 12px; font-weight: 650; color: white; background: #8b5cf6; cursor: pointer; }
+    button:disabled { opacity: .55; cursor: wait; }
+    #status { margin-top: 12px; padding: 10px; border-radius: 9px; background: #211c31; color: #d8d1e8; font-size: 12px; line-height: 1.45; min-height: 36px; }
+    #permission { margin-top: 8px; font-size: 10px; color: #958ba9; }
+    .ok { color: #86efac !important; }
+    .bad { color: #fca5a5 !important; }
+  </style>
+</head>
+<body>
+  <div class="brand">ARIDEEV</div>
+  <h1>Suno Presence</h1>
+  <p>Autoriza la conexión local con la aplicación de Windows. Este paso permite que la extensión envíe a Arideev la canción que reproduce Suno.</p>
+  <button id="connect">Conectar con Arideev</button>
+  <div id="status" role="status" aria-live="polite">Pulsa el botón para comprobar la aplicación de escritorio.</div>
+  <div id="permission">Permiso de red local: sin comprobar</div>
+  <script src="popup.js"></script>
+</body>
+</html>

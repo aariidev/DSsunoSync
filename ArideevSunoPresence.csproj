@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ArideevSunoPresence</AssemblyName>
+    <ApplicationIcon>Assets\Arideev.ico</ApplicationIcon>
+    <RootNamespace>ArideevSunoPresence</RootNamespace>
+    <Version>0.3.0</Version>
+    <Authors>Arideev</Authors>
+    <Description>Discord Rich Presence for Suno playback</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Arideev.ico" />
+    <Resource Include="Assets\Arideev.png" />
+    <EmbeddedResource Include="BrowserExtension\manifest.json" LogicalName="ArideevSunoPresence.BrowserExtension.manifest.json" />
+    <EmbeddedResource Include="BrowserExtension\page-bridge.js" LogicalName="ArideevSunoPresence.BrowserExtension.page-bridge.js" />
+    <EmbeddedResource Include="BrowserExtension\content.js" LogicalName="ArideevSunoPresence.BrowserExtension.content.js" />
+    <EmbeddedResource Include="BrowserExtension\background.js" LogicalName="ArideevSunoPresence.BrowserExtension.background.js" />
+    <EmbeddedResource Include="BrowserExtension\popup.html" LogicalName="ArideevSunoPresence.BrowserExtension.popup.html" />
+    <EmbeddedResource Include="BrowserExtension\popup.js" LogicalName="ArideevSunoPresence.BrowserExtension.popup.js" />
+  </ItemGroup>
+</Project>
