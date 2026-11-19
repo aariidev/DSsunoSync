@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-4C8BF5?logo=windows" alt="Windows 10 y 11">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet" alt=".NET 10">
   <img src="https://img.shields.io/badge/Brave%20%7C%20Chrome%20%7C%20Edge-MV3-FB542B?logo=googlechrome" alt="Brave, Chrome y Edge">
-  <img src="https://img.shields.io/badge/Release-v0.3.12-E34A5E" alt="Release 0.3.12">
+  <img src="https://img.shields.io/badge/Release-v0.3.13-E34A5E" alt="Release 0.3.13">
 </p>
 
 ---
@@ -55,7 +55,7 @@ Descarga el instalador más reciente desde [Releases](https://github.com/aariide
 
 ## ◈ Actualizaciones
 
-SunoSync consulta GitHub Releases al iniciar y descarga la nueva versión en segundo plano. La descarga se verifica con SHA-256. Cuando esté lista, selecciona **Salir** desde el icono de la bandeja: el instalador se ejecutará en modo silencioso y SunoSync volverá a abrirse minimizado.
+SunoSync consulta GitHub Releases al iniciar y descarga la nueva versión en segundo plano. Si la API de GitHub limita las consultas, obtiene la versión desde la página pública de Releases. La descarga se verifica con SHA-256. Cuando esté lista, selecciona **Salir** desde el icono de la bandeja: el instalador se ejecutará en modo silencioso y SunoSync volverá a abrirse minimizado.
 
 La app actualiza los archivos de la extensión junto con cada instalación. Como la extensión se carga localmente, después de actualizar puede ser necesario pulsar **Recargar** en la página de extensiones de Brave, Chrome o Edge.
 
@@ -82,8 +82,8 @@ El ejecutable aparece en `publish\ArideevSunoPresence.exe`; el instalador, en `d
 Actualiza el mismo número de versión en el proyecto y en el manifiesto de la extensión. Después, crea y sube una etiqueta `vX.Y.Z`; GitHub Actions compilará y publicará el instalador y su checksum SHA-256.
 
 ```powershell
-git tag v0.3.12
-git push origin v0.3.12
+git tag v0.3.13
+git push origin v0.3.13
 ```
 
 ---
@@ -107,5 +107,5 @@ El puente solo escucha en loopback. La extensión envía los metadatos de reprod
 ---
 
 <p align="center">
-  <sub>Hecho con ♥ por aarideev · SunoSync 0.3.12</sub>
+  <sub>Hecho con ♥ por aarideev · SunoSync 0.3.13</sub>
 </p>
