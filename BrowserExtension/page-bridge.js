@@ -21,6 +21,71 @@
     return "";
   };
 
+  const cleanAlbum = value => clean(value)
+    .replace(/^(?:view\s+all\s+albums?|ver\s+(?:todos?\s+los?\s+)?[áa]lbum(?:es)?)\s*/i, "")
+    .replace(/\s*\d+\s+song(?:s)?\s*$/i, "")
+    .trim();
+
+  const normalizeTrackText = value => clean(value)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim();
+
+  const getSongUrl = value => {
+    try {
+      const url = new URL(value, location.origin);
+      if (url.protocol !== "https:" || !/(^|\.)suno\.com$/i.test(url.hostname)) return null;
+      const match = url.pathname.match(/^\/song\/[^/?#]+/i);
+      return match ? `${url.origin}${match[0]}` : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const findSongUrl = (playerRoot, title, artist) => {
+    const titleText = normalizeTrackText(title);
+    if (titleText.length < 3) return "https://suno.com";
+    const artistText = normalizeTrackText(artist);
+    const roots = playerRoot === document ? [document] : [playerRoot, document];
+    const candidates = new Map();
+
+    for (const root of roots) {
+      for (const anchor of root.querySelectorAll?.('a[href*="/song/"]') || []) {
+        const url = getSongUrl(anchor.href);
+        if (!url) continue;
+
+        const anchorText = normalizeTrackText([
+          anchor.innerText,
+          anchor.getAttribute("aria-label"),
+          anchor.getAttribute("title")
+        ].filter(Boolean).join(" "));
+        if (!anchorText.includes(titleText)) continue;
+
+        const score = (root === playerRoot ? 2 : 0)
+          + (anchorText === titleText ? 2 : 0)
+          + (artistText && anchorText.includes(artistText) ? 1 : 0);
+        const previous = candidates.get(url);
+        if (!previous || score > previous.score)
+          candidates.set(url, { url, score });
+      }
+    }
+
+    const ranked = [...candidates.values()].sort((a, b) => b.score - a.score);
+    if (ranked.length && (ranked.length === 1 || ranked[0].score > ranked[1].score))
+      return ranked[0].url;
+
+    const currentPageUrl = getSongUrl(location.href);
+    const pageTitle = normalizeTrackText(
+      document.querySelector('meta[property="og:title"]')?.content
+      || document.title.replace(/\s*[|·-]\s*Suno.*$/i, "")
+    );
+    if (currentPageUrl && pageTitle.length >= 3 && pageTitle.includes(titleText))
+      return currentPageUrl;
+    return "https://suno.com";
+  };
+
   // Suno has changed its internal player markup several times. Search ordinary DOM
   // and open shadow roots rather than depending on one CSS class or test ID.
   const collectMediaElements = () => {
@@ -150,12 +215,12 @@
       || creator
       || first(['meta[name="author"]'])
       || "Artista desconocido";
-    const album = clean(session.metadata?.album)
-      || first(['[data-testid*="album"]', '[class*="album-name"]', '[class*="AlbumName"]'], playerRoot);
+    const album = cleanAlbum(
+      session.metadata?.album
+      || first(['[data-testid*="album"]', '[class*="album-name"]', '[class*="AlbumName"]'], playerRoot)
+    );
 
-    const songAnchor = (playerRoot !== document ? playerRoot.querySelector('a[href*="/song/"]') : null)
-      || document.querySelector('a[href*="/song/"]');
-    const songUrl = songAnchor?.href ? new URL(songAnchor.href, location.origin).href : location.href;
+    const songUrl = findSongUrl(playerRoot, rawTitle, artist);
 
     const knownPausedMedia = !!(
       activeMedia && activeMedia.paused && !activeMedia.ended
