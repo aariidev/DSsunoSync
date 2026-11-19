@@ -2,7 +2,7 @@
   <img src="Assets/Arideev.png" alt="aarideev" width="112">
 </p>
 
-<h1 align="center">aarideev&nbsp; | &nbsp;SunoSync</h1>
+<h1 align="center">AARIDEEV&nbsp; | &nbsp;DS SUNOSYNC</h1>
 
 <p align="center">
   Tu música de Suno, sincronizada con tu presencia de Discord.
@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-4C8BF5?logo=windows" alt="Windows 10 y 11">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet" alt=".NET 10">
   <img src="https://img.shields.io/badge/Brave%20%7C%20Chrome%20%7C%20Edge-MV3-FB542B?logo=googlechrome" alt="Brave, Chrome y Edge">
-  <img src="https://img.shields.io/badge/Release-v0.3.13-E34A5E" alt="Release 0.3.13">
+  <img src="https://img.shields.io/badge/Release-v0.3.14-E34A5E" alt="Release 0.3.14">
 </p>
 
 ---
@@ -32,7 +32,7 @@ SunoSync detecta lo que estás escuchando en Suno y lo muestra en tu perfil de D
 
 ### 1. Instala SunoSync
 
-Descarga el instalador más reciente desde [Releases](https://github.com/aariidev/Sndspresence/releases/latest) y ejecútalo.
+Descarga el instalador más reciente desde [Releases](https://github.com/aariidev/DSsunoSync/releases/latest) y ejecútalo.
 
 ### 2. Conecta Discord
 
@@ -82,8 +82,8 @@ El ejecutable aparece en `publish\ArideevSunoPresence.exe`; el instalador, en `d
 Actualiza el mismo número de versión en el proyecto y en el manifiesto de la extensión. Después, crea y sube una etiqueta `vX.Y.Z`; GitHub Actions compilará y publicará el instalador y su checksum SHA-256.
 
 ```powershell
-git tag v0.3.13
-git push origin v0.3.13
+git tag v0.3.14
+git push origin v0.3.14
 ```
 
 ---
@@ -107,5 +107,5 @@ El puente solo escucha en loopback. La extensión envía los metadatos de reprod
 ---
 
 <p align="center">
-  <sub>Hecho con ♥ por aarideev · SunoSync 0.3.13</sub>
+  <sub>Hecho con ♥ por aarideev · SunoSync 0.3.14</sub>
 </p>

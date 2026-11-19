@@ -20,8 +20,8 @@ public sealed class GitHubUpdateService
 {
     private const long MaxInstallerBytes = 300L * 1024 * 1024;
     private const string InstallerFileName = "ArideevSunoPresence-Update.exe";
-    private static readonly Uri LatestReleaseUri = new("https://api.github.com/repos/aariidev/Sndspresence/releases/latest");
-    private static readonly Uri LatestReleasePageUri = new("https://github.com/aariidev/Sndspresence/releases/latest");
+    private static readonly Uri LatestReleaseUri = new("https://api.github.com/repos/aariidev/DSsunoSync/releases/latest");
+    private static readonly Uri LatestReleasePageUri = new("https://github.com/aariidev/DSsunoSync/releases/latest");
     private static readonly HttpClient Http = CreateHttpClient();
 
     public async Task<UpdateCheckResult> CheckAndDownloadAsync(Version currentVersion, CancellationToken cancellationToken = default)
@@ -176,7 +176,7 @@ public sealed class GitHubUpdateService
 
     private static string? GetReleaseTagFromUri(Uri uri)
     {
-        const string releaseTagPath = "/aariidev/Sndspresence/releases/tag/";
+        const string releaseTagPath = "/aariidev/DSsunoSync/releases/tag/";
         var path = uri.AbsolutePath;
         var marker = path.LastIndexOf(releaseTagPath, StringComparison.OrdinalIgnoreCase);
         if (marker < 0) return null;
@@ -187,7 +187,7 @@ public sealed class GitHubUpdateService
     private static Uri GetReleaseAssetUri(string tag, string assetName)
     {
         return new Uri(
-            $"https://github.com/aariidev/Sndspresence/releases/download/{Uri.EscapeDataString(tag)}/{Uri.EscapeDataString(assetName)}");
+            $"https://github.com/aariidev/DSsunoSync/releases/download/{Uri.EscapeDataString(tag)}/{Uri.EscapeDataString(assetName)}");
     }
 
     private static HttpClient CreateHttpClient()
