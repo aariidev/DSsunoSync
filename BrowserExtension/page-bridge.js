@@ -200,6 +200,7 @@
 
   let lastPayload = "";
   let lastPostAt = 0;
+  let reportScheduled = false;
   const report = () => {
     try {
       const payload = extract();
@@ -218,7 +219,14 @@
     }
   };
 
-  const reportSoon = () => window.setTimeout(report, 50);
+  const reportSoon = () => {
+    if (reportScheduled) return;
+    reportScheduled = true;
+    window.setTimeout(() => {
+      reportScheduled = false;
+      report();
+    }, 20);
+  };
   document.addEventListener("play", event => {
     if (event.target instanceof HTMLMediaElement) lastActiveMedia = event.target;
     reportSoon();
@@ -229,10 +237,15 @@
     if (event.target === lastActiveMedia) lastActiveMedia = null;
     reportSoon();
   }, true);
+  document.addEventListener("emptied", reportSoon, true);
+  document.addEventListener("loadstart", reportSoon, true);
+  document.addEventListener("loadeddata", reportSoon, true);
   document.addEventListener("loadedmetadata", reportSoon, true);
   document.addEventListener("durationchange", reportSoon, true);
   document.addEventListener("seeked", reportSoon, true);
-  window.setInterval(report, 900);
+  window.addEventListener("popstate", reportSoon);
+  window.addEventListener("hashchange", reportSoon);
+  window.setInterval(report, 350);
   new MutationObserver(reportSoon).observe(document.documentElement, {
     subtree: true, childList: true, characterData: true, attributes: true,
     attributeFilter: ["src", "data-src", "aria-label", "class"]

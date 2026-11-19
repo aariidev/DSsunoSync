@@ -48,7 +48,7 @@ public sealed class DiscordRpcClient : IAsyncDisposable
 
         var targetUrl = track.PageUrl is { Length: > 0 } ? track.PageUrl : "https://suno.com";
         if (targetUrl.Length <= 512)
-            activity["buttons"] = new[] { new Dictionary<string, string> { ["label"] = "Abrir canción", ["url"] = targetUrl } };
+            activity["buttons"] = new[] { new Dictionary<string, string> { ["label"] = "Escuchar en Suno", ["url"] = targetUrl } };
 
         await SendCommandAndWaitAsync("SET_ACTIVITY",
             new Dictionary<string, object?> { ["pid"] = Environment.ProcessId, ["activity"] = activity },

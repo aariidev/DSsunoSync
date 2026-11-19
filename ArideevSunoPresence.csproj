@@ -10,7 +10,7 @@
     <AssemblyName>ArideevSunoPresence</AssemblyName>
     <ApplicationIcon>Assets\Arideev.ico</ApplicationIcon>
     <RootNamespace>ArideevSunoPresence</RootNamespace>
-    <Version>0.3.10</Version>
+    <Version>0.3.11</Version>
     <Authors>Arideev</Authors>
     <Description>aarideev | SunoSync - Discord Rich Presence for Suno</Description>
   </PropertyGroup>
