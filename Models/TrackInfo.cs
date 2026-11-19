@@ -5,6 +5,7 @@ public sealed class TrackInfo
     public bool HasTrack { get; set; }
     public string Title { get; set; } = "Canción desconocida";
     public string Artist { get; set; } = "Artista desconocido";
+    public string Album { get; set; } = "";
     public string? CoverUrl { get; set; }
     public string? TrackId { get; set; }
     public string? SourceId { get; set; }
@@ -24,7 +25,7 @@ public sealed class TrackInfo
     public int PlayingMediaCount { get; set; }
     public string DiagnosticMessage { get; set; } = "";
 
-    public string Fingerprint => string.Join("|", TrackId ?? "", Title, Artist, CoverUrl ?? "", IsPlaying);
+    public string Fingerprint => string.Join("|", TrackId ?? "", Title, Artist, Album, CoverUrl ?? "", IsPlaying);
 
     public TrackInfo Sanitized()
     {
@@ -36,17 +37,21 @@ public sealed class TrackInfo
 
         var cover = SafeHttps(CoverUrl, 2048);
         var page = SafeSunoPage(PageUrl);
+        var duration = Math.Clamp(DurationSeconds, 0, 86400);
+        var position = double.IsFinite(PositionSeconds) ? Math.Clamp(PositionSeconds, 0, 86400) : 0;
+        if (duration > 0) position = Math.Min(position, duration);
         return new TrackInfo
         {
             HasTrack = HasTrack,
             Title = Clean(Title, 120, "Canción desconocida"),
             Artist = Clean(Artist, 100, "Artista desconocido"),
+            Album = Clean(Album, 100, ""),
             CoverUrl = cover,
             TrackId = Clean(TrackId, 300, ""),
             SourceId = Clean(SourceId, 64, "unknown"),
             PageUrl = page ?? "https://suno.com",
-            DurationSeconds = Math.Clamp(DurationSeconds, 0, 86400),
-            PositionSeconds = double.IsFinite(PositionSeconds) ? Math.Clamp(PositionSeconds, 0, 86400) : 0,
+            DurationSeconds = duration,
+            PositionSeconds = position,
             IsPlaying = HasTrack && IsPlaying,
             Source = Clean(Source, 20, "Suno"),
             MediaSessionAvailable = MediaSessionAvailable,

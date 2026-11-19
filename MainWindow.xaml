@@ -27,7 +27,7 @@
    <Border Background="#14161C" BorderBrush="#282B33" BorderThickness="1" CornerRadius="18" Padding="24">
     <Grid>
      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="260"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
-     <DockPanel Margin="0,0,0,16">
+     <DockPanel Margin="0,0,0,16" LastChildFill="False">
       <TextBlock Text="REPRODUCIENDO AHORA" Foreground="#A4A7B0" FontSize="10" FontWeight="Bold"/>
       <TextBlock x:Name="SourceText" Text="SIN FUENTE" Foreground="#777B86" FontSize="10" DockPanel.Dock="Right"/>
      </DockPanel>
@@ -57,7 +57,7 @@
      </Grid>
      <StackPanel Grid.Row="3" Margin="0,24,0,0">
       <ProgressBar x:Name="TrackProgress" Height="4" Maximum="100" Value="0" Background="#30333B" Foreground="#E34A5E"/>
-      <DockPanel Margin="0,9,0,0">
+      <DockPanel Margin="0,9,0,0" LastChildFill="False">
        <TextBlock x:Name="ElapsedText" Text="00:00" Foreground="#A4A7B0" FontSize="11"/>
        <TextBlock x:Name="DurationText" Text="--:--" Foreground="#A4A7B0" FontSize="11" DockPanel.Dock="Right"/>
       </DockPanel>
@@ -102,7 +102,7 @@
    </Border>
   </Grid>
   <DockPanel Grid.Row="2" Margin="30,0,30,13">
-   <TextBlock Text="aarideev  /  SUNOSYNC  /  0.3.9" Foreground="#666A73" FontSize="10"/>
+   <TextBlock Text="aarideev  /  SUNOSYNC  /  0.3.10" Foreground="#666A73" FontSize="10"/>
    <TextBlock x:Name="LogText" Text="Preparado." Foreground="#9296A0" FontSize="10" DockPanel.Dock="Right"/>
   </DockPanel>
  </Grid>

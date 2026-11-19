@@ -66,7 +66,11 @@ public sealed class DiscordRpcClient : IAsyncDisposable
 
     private static Dictionary<string, object?> BuildAssets(TrackInfo track)
     {
-        var assets = new Dictionary<string, object?> { ["large_text"] = Limit($"{track.Title} · {track.Artist}", 128) };
+        var assets = new Dictionary<string, object?>();
+        if (!string.IsNullOrWhiteSpace(track.Album)
+            && !string.Equals(track.Album, track.Title, StringComparison.OrdinalIgnoreCase)
+            && !string.Equals(track.Album, track.Artist, StringComparison.OrdinalIgnoreCase))
+            assets["large_text"] = Limit(track.Album, 128);
         // Discord accepts publicly reachable external HTTPS images for large_image.
         // Keep within a conservative URL length; an overlong CDN signature should not
         // prevent the text activity itself from being published.

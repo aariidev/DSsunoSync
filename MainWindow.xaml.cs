@@ -26,7 +26,7 @@ public partial class MainWindow : Window
     private readonly GitHubUpdateService _updateService = new();
     private readonly CancellationTokenSource _updateCheckCancellation = new();
     private string? _pendingUpdateInstaller;
-    private static readonly HttpClient CoverHttp = new() { Timeout = TimeSpan.FromSeconds(7) };
+    private static readonly HttpClient CoverHttp = CreateCoverHttpClient();
     private string? _lastCoverUrl;
     private Forms.NotifyIcon? _tray;
     private System.Drawing.Icon? _trayAppIcon;
@@ -44,6 +44,15 @@ public partial class MainWindow : Window
     private DateTimeOffset? _lastExtensionReport;
     private bool _reallyExit;
     private AppSettings _settings = new();
+
+    private static HttpClient CreateCoverHttpClient()
+    {
+        var client = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
+        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131 Safari/537.36");
+        client.DefaultRequestHeaders.Referrer = new Uri("https://suno.com/");
+        client.DefaultRequestHeaders.Accept.ParseAdd("image/avif,image/webp,image/apng,image/*,*/*;q=0.8");
+        return client;
+    }
 
     public MainWindow()
     {
@@ -293,6 +302,7 @@ public partial class MainWindow : Window
             || !string.Equals(_track.TrackId ?? _track.Title, track.TrackId ?? track.Title, StringComparison.Ordinal)
             || !string.Equals(_track.Title, track.Title, StringComparison.Ordinal)
             || !string.Equals(_track.Artist, track.Artist, StringComparison.Ordinal)
+            || !string.Equals(_track.Album, track.Album, StringComparison.Ordinal)
             || !string.Equals(_track.CoverUrl, track.CoverUrl, StringComparison.Ordinal)
             || !string.Equals(_track.PageUrl, track.PageUrl, StringComparison.Ordinal);
         if (changed) _startedAt = null;
@@ -341,11 +351,14 @@ public partial class MainWindow : Window
             CoverImage.Source = bitmap;
             CoverImage.Visibility = Visibility.Visible;
         }
-        catch
+        catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException or IOException
+            or FormatException or NotSupportedException or UnauthorizedAccessException
+            or System.Runtime.InteropServices.COMException)
         {
             if (!string.Equals(_lastCoverUrl, coverUrl, StringComparison.Ordinal)) return;
             CoverImage.Source = null;
             CoverImage.Visibility = Visibility.Collapsed;
+            LogText.Text = $"No se pudo cargar la portada: {ex.Message}";
         }
     }
 
@@ -364,9 +377,15 @@ public partial class MainWindow : Window
         var elapsed = _track.IsPlaying && _startedAt.HasValue
             ? DateTimeOffset.UtcNow - _startedAt.Value
             : TimeSpan.FromSeconds(Math.Max(0, _track.PositionSeconds));
+        var elapsedSeconds = Math.Max(0, elapsed.TotalSeconds);
+        if (_track.DurationSeconds > 0)
+            elapsedSeconds = Math.Min(elapsedSeconds, _track.DurationSeconds);
+        elapsed = TimeSpan.FromSeconds(elapsedSeconds);
         ElapsedText.Text = elapsed.ToString(@"mm\:ss");
         if (_track.DurationSeconds > 0)
             TrackProgress.Value = Math.Clamp(elapsed.TotalSeconds / _track.DurationSeconds * 100, 0, 100);
+        else
+            TrackProgress.Value = 0;
     }
 
     private async Task RetryDiscordAsync()

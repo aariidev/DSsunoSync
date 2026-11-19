@@ -150,6 +150,8 @@
       || creator
       || first(['meta[name="author"]'])
       || "Artista desconocido";
+    const album = clean(session.metadata?.album)
+      || first(['[data-testid*="album"]', '[class*="album-name"]', '[class*="AlbumName"]'], playerRoot);
 
     const songAnchor = (playerRoot !== document ? playerRoot.querySelector('a[href*="/song/"]') : null)
       || document.querySelector('a[href*="/song/"]');
@@ -178,6 +180,7 @@
       hasTrack,
       title: trackTitle,
       artist: hasTrack ? artist : "Suno",
+      album: hasTrack ? album : "",
       coverUrl: hasTrack ? cover : null,
       trackId: hasTrack ? trackId : "",
       pageUrl: songUrl,

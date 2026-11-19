@@ -72,6 +72,7 @@ public sealed class PresenceCoordinator : IAsyncDisposable
             var changed = _latest is null || !string.Equals(_latest.TrackId ?? _latest.Title, track.TrackId ?? track.Title, StringComparison.Ordinal)
                 || !string.Equals(_latest.Title, track.Title, StringComparison.Ordinal)
                 || !string.Equals(_latest.Artist, track.Artist, StringComparison.Ordinal)
+                || !string.Equals(_latest.Album, track.Album, StringComparison.Ordinal)
                 || !string.Equals(_latest.CoverUrl, track.CoverUrl, StringComparison.Ordinal)
                 || !string.Equals(_latest.PageUrl, track.PageUrl, StringComparison.Ordinal);
             var seeked = false;

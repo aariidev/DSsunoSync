@@ -40,6 +40,7 @@
       hasTrack: !!payload.hasTrack,
       title: String(payload.title || "Canción desconocida").slice(0, 120),
       artist: String(payload.artist || "Artista desconocido").slice(0, 100),
+      album: String(payload.album || "").slice(0, 100),
       coverUrl: typeof payload.coverUrl === "string" ? payload.coverUrl.slice(0, 2048) : null,
       trackId: String(payload.trackId || "").slice(0, 300),
       pageUrl: songPageUrl,
