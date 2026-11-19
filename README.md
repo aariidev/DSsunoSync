@@ -1,111 +1,137 @@
 <p align="center">
-  <img src="Assets/Arideev.png" alt="aarideev" width="112">
-</p>
-
-<h1 align="center">AARIDEEV&nbsp; | &nbsp;DS SUNOSYNC</h1>
-
-<p align="center">
-  Tu música de Suno, sincronizada con tu presencia de Discord.
+  <img src="Assets/Arideev.png" alt="Arideev" width="88">
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-4C8BF5?logo=windows" alt="Windows 10 y 11">
-  <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet" alt=".NET 10">
-  <img src="https://img.shields.io/badge/Brave%20%7C%20Chrome%20%7C%20Edge-MV3-FB542B?logo=googlechrome" alt="Brave, Chrome y Edge">
-  <img src="https://img.shields.io/badge/Release-v0.3.14-E34A5E" alt="Release 0.3.14">
+  <img src="Assets/SunoSync-readme-banner.svg" alt="AARIDEEV | DS SUNOSYNC — la escucha de Suno en tu perfil de Discord" width="100%">
+</p>
+
+<p align="center">
+  <a href="https://github.com/aariidev/DSsunoSync/releases/latest">
+    <img src="https://img.shields.io/github/v/release/aariidev/DSsunoSync?style=for-the-badge&label=LATEST%20RELEASE&color=bd55ff" alt="Última versión">
+  </a>
+  <img src="https://img.shields.io/badge/WINDOWS-10%20%2F%2011-8c63ff?style=for-the-badge&logo=windows" alt="Windows 10 y 11">
+  <img src="https://img.shields.io/badge/DISCORD-RICH%20PRESENCE-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord Rich Presence">
+  <img src="https://img.shields.io/badge/BRAVE%20%7C%20CHROME%20%7C%20EDGE-MV3-36d8d0?style=for-the-badge&logo=googlechrome&logoColor=10101b" alt="Brave, Chrome y Edge">
+</p>
+
+<p align="center">
+  <a href="https://github.com/aariidev/DSsunoSync/releases/latest"><strong>⬇ Descargar SunoSync</strong></a>
+  &nbsp; · &nbsp;
+  <a href="https://github.com/aariidev/DSsunoSync"><strong>Explorar el proyecto</strong></a>
 </p>
 
 ---
 
-## ✦ Tu música, siempre presente
+<h2 align="center">La presencia de Suno que Discord aún no ofrece.</h2>
 
-SunoSync detecta lo que estás escuchando en Suno y lo muestra en tu perfil de Discord. La app se queda discretamente en la bandeja, mantiene la conexión y puede actualizarse desde GitHub Releases.
+<p align="center">
+  SunoSync conecta lo que escuchas en <strong>Suno</strong> con tu perfil de <strong>Discord</strong>.<br>
+  Canción, artista, portada y un enlace directo: tu música también tiene lugar en tu actividad.
+</p>
 
-| En tiempo real | Ligera y discreta | Hecha para ti |
-|:--|:--|:--|
-| Canción, artista, portada y reproducción | Se integra con Discord Desktop | Icono y estilo aarideev |
-| Brave, Chrome y Edge | Inicio opcional con Windows | Actualizaciones automáticas |
+<br>
 
----
+## ✦ Tu escucha, convertida en presencia
 
-## ◆ Primeros pasos
+| 🎵 **Ahora suena** | 🎨 **Con identidad** | ↗ **A un clic** |
+|:--:|:--:|:--:|
+| El título y el artista de la canción aparecen en tu actividad. | La portada acompaña la escucha; el álbum aparece cuando corresponde. | El botón **Escuchar en Suno** lleva directamente a la canción. |
 
-### 1. Instala SunoSync
+<p align="center">
+  <strong>Reproduce en Suno</strong> &nbsp; ⟶ &nbsp;
+  <strong>SunoSync detecta la escucha</strong> &nbsp; ⟶ &nbsp;
+  <strong>Discord la muestra en tu perfil</strong>
+</p>
 
-Descarga el instalador más reciente desde [Releases](https://github.com/aariidev/DSsunoSync/releases/latest) y ejecútalo.
-
-### 2. Conecta Discord
-
-1. Crea una aplicación en el [Discord Developer Portal](https://discord.com/developers/applications).
-2. Copia su **Application ID** —no un bot token— y pégalo en SunoSync.
-3. Deja activada la opción **Rich Presence** y pulsa **Guardar configuración**.
-4. Comprueba la conexión con **Probar conexión con Discord**. Discord Desktop debe estar abierto.
-
-### 3. Conecta tu navegador
-
-1. Abre `brave://extensions`, `chrome://extensions` o `edge://extensions`.
-2. Activa **Modo de desarrollador** y carga como descomprimida la carpeta indicada por SunoSync.
-3. Abre el icono de **aarideev | SunoSync** y pulsa **Conectar con SunoSync**.
-4. Permite el acceso local si el navegador te lo solicita.
-5. Recarga Suno, inicia una canción y listo.
-
-> **¿No aparece la canción?** Comprueba los paneles de estado de SunoSync. El popup verifica por separado el permiso local y el puente de la extensión.
+| ⚡ **Se mantiene al día** | 🫧 **Discreto** | 🌐 **A tu manera** |
+|:--:|:--:|:--:|
+| Se actualiza al cambiar de canción y sigue el estado de reproducción. | Se integra con Discord Desktop y puede permanecer en la bandeja del sistema. | Extensión para Brave, Chrome y Edge. |
 
 ---
 
-## ◈ Actualizaciones
+## ◈ Una idea que merece llegar a Discord
 
-SunoSync consulta GitHub Releases al iniciar y descarga la nueva versión en segundo plano. Si la API de GitHub limita las consultas, obtiene la versión desde la página pública de Releases. La descarga se verifica con SHA-256. Cuando esté lista, selecciona **Salir** desde el icono de la bandeja: el instalador se ejecutará en modo silencioso y SunoSync volverá a abrirse minimizado.
+Discord permite compartir lo que estás haciendo. **SunoSync lleva esa idea a la música que nace y se escucha en Suno**: una presencia que da contexto a la canción y facilita descubrirla.
 
-La app actualiza los archivos de la extensión junto con cada instalación. Como la extensión se carga localmente, después de actualizar puede ser necesario pulsar **Recargar** en la página de extensiones de Brave, Chrome o Edge.
+Es un proyecto independiente y una muestra de cómo podría sentirse una integración nativa de Suno en Discord.
+
+<p align="center">
+  <a href="https://github.com/aariidev/DSsunoSync/releases/latest"><strong>Prueba SunoSync</strong></a>
+  &nbsp; · &nbsp;
+  <a href="https://github.com/aariidev/DSsunoSync"><strong>Comparte la propuesta</strong></a>
+</p>
+
+<p align="center">
+  <sub>No afiliado oficialmente con Discord ni con Suno.</sub>
+</p>
 
 ---
 
-## ⚙ Compilar desde el código
+## ⚙ Detalles técnicos
 
-**Necesitas:** Windows 10/11 x64, .NET 10 SDK y [Inno Setup 6](https://jrsoftware.org/isinfo.php) para crear el instalador.
+### Compatibilidad
+
+| Componente | Requisito |
+|:--|:--|
+| Sistema | Windows 10 u 11 (x64) |
+| Discord | Aplicación de escritorio abierta |
+| Navegador | Brave, Chrome o Edge con extensiones Manifest V3 |
+| Configuración de Discord | Application ID de una aplicación creada en el [Discord Developer Portal](https://discord.com/developers/applications); no se necesita bot ni bot token |
+
+### Instalación
+
+1. Descarga y ejecuta el instalador desde [GitHub Releases](https://github.com/aariidev/DSsunoSync/releases/latest).
+2. Crea una aplicación en el [Discord Developer Portal](https://discord.com/developers/applications), copia su **Application ID** y configúralo en SunoSync.
+3. En `brave://extensions`, `chrome://extensions` o `edge://extensions`, activa **Modo de desarrollador** y carga la carpeta de extensión indicada por SunoSync.
+4. Abre el popup de la extensión, pulsa **Conectar con SunoSync** y permite el acceso a la red local si el navegador lo solicita.
+5. Recarga Suno y reproduce una canción.
+
+La extensión comprueba tanto el puente local como su conexión desde el service worker. Si algo falla, el popup muestra el estado del permiso y el detalle del error.
+
+### Arquitectura y privacidad
+
+```text
+Suno (pestaña del navegador)
+        ↓
+Extensión Manifest V3
+        ↓ HTTP local · 127.0.0.1:47831
+SunoSync para Windows
+        ↓ Discord IPC local
+Discord Desktop
+```
+
+El puente local escucha únicamente en loopback. La extensión solicita acceso a Suno y al puente local; la conexión con Discord se realiza mediante su IPC local.
+
+### Actualizaciones
+
+SunoSync comprueba GitHub Releases y verifica la descarga del instalador con SHA-256. La aplicación se actualiza al instalar una nueva versión. Como la extensión se carga localmente, puede ser necesario pulsar **Recargar** en la página de extensiones después de actualizar.
+
+### Compilación desde el código
+
+Requiere Windows x64 y [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0). Para generar el instalador también se necesita [Inno Setup 6](https://jrsoftware.org/isinfo.php).
 
 ```powershell
 .\Scripts\Build-Windows.ps1
 ```
 
-Para generar solo la app autónoma:
+Para compilar la aplicación sin generar el instalador:
 
 ```powershell
 .\Scripts\Build-Windows.ps1 -SkipInstaller
 ```
 
-El ejecutable aparece en `publish\ArideevSunoPresence.exe`; el instalador, en `dist\`.
+El ejecutable se genera en `publish\ArideevSunoPresence.exe`; el instalador, en `dist\`.
 
-### Publicar una versión
+### Límites conocidos
 
-Actualiza el mismo número de versión en el proyecto y en el manifiesto de la extensión. Después, crea y sube una etiqueta `vX.Y.Z`; GitHub Actions compilará y publicará el instalador y su checksum SHA-256.
-
-```powershell
-git tag v0.3.14
-git push origin v0.3.14
-```
-
----
-
-## ◇ Cómo funciona
-
-```text
-Suno en el navegador → Extensión MV3 → Puente local (127.0.0.1) → SunoSync → Discord Desktop
-```
-
-El puente solo escucha en loopback. La extensión envía los metadatos de reproducción; SunoSync se comunica con Discord Desktop mediante Discord IPC local.
-
----
-
-## Límites conocidos
-
-- Los cambios en el reproductor o en Media Session de Suno pueden afectar la detección.
-- La extensión instalada como descomprimida no se recarga sola después de actualizar la app.
-- La portada de Discord depende de que la imagen sea accesible públicamente.
+- Cambios en el reproductor o en Media Session de Suno pueden afectar la detección.
+- La extensión instalada como descomprimida no se recarga automáticamente tras una actualización.
+- Discord solo puede mostrar portadas externas accesibles mediante HTTPS.
 
 ---
 
 <p align="center">
-  <sub>Hecho con ♥ por aarideev · SunoSync 0.3.14</sub>
+  <sub>AARIDEEV&nbsp; | &nbsp;DS SUNOSYNC</sub><br>
+  <sub>Una escucha. Una presencia. Un mundo por descubrir.</sub>
 </p>

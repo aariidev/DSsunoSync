@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">AARIDEEV | DS SUNOSYNC</title>
+  <desc id="desc">La escucha de Suno, en tu perfil de Discord.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#100c20"/>
+      <stop offset=".55" stop-color="#19102e"/>
+      <stop offset="1" stop-color="#09202c"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e64de7"/>
+      <stop offset=".52" stop-color="#a866ff"/>
+      <stop offset="1" stop-color="#40e7dc"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff59dc" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#36ded6" stop-opacity=".12"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop offset="0" stop-color="#b542d8" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#b542d8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="360" rx="32" fill="url(#background)"/>
+  <circle cx="970" cy="172" r="290" fill="url(#halo)"/>
+  <rect x="2" y="2" width="1196" height="356" rx="30" fill="none" stroke="url(#edge)" stroke-opacity=".72" stroke-width="2"/>
+  <path d="M735 236c26 0 27-66 53-66s26 106 53 106 27-146 54-146 27 109 54 109 27-69 54-69 27 41 54 41 27-24 53-24" fill="none" stroke="url(#edge)" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" opacity=".8"/>
+  <path d="M720 237h440" stroke="url(#edge)" stroke-opacity=".18" stroke-width="1"/>
+  <rect x="76" y="66" width="6" height="226" rx="3" fill="url(#edge)"/>
+  <text x="112" y="134" fill="#f8f2ff" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="7">AARIDEEV</text>
+  <text x="112" y="211" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="800" letter-spacing="1">DS SUNOSYNC</text>
+  <text x="115" y="258" fill="#d6c9e8" font-family="Segoe UI, Arial, sans-serif" font-size="23" letter-spacing="1.2">LA ESCUCHA DE SUNO, EN TU PERFIL DE DISCORD</text>
+  <rect x="925" y="77" width="178" height="34" rx="17" fill="url(#glow)" stroke="url(#edge)" stroke-opacity=".65"/>
+  <circle cx="948" cy="94" r="5" fill="#50e5d7"/>
+  <text x="966" y="100" fill="#e8ddf6" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">MUSIC PRESENCE</text>
+</svg>
