@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "aarideev | SunoSync Connector",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Conecta el reproductor de Suno con aarideev | SunoSync.",
   "permissions": [],
   "host_permissions": [

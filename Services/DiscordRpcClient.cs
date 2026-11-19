@@ -32,7 +32,7 @@ public sealed class DiscordRpcClient : IAsyncDisposable
             ["type"] = 2,
             ["details"] = Limit(track.Title, 128),
             ["state"] = track.IsPlaying
-                ? Limit($"{track.Artist} · Suno", 128)
+                ? Limit(track.Artist, 128)
                 : Limit($"En pausa · {track.Artist}", 128),
             ["assets"] = BuildAssets(track)
         };
@@ -48,7 +48,7 @@ public sealed class DiscordRpcClient : IAsyncDisposable
 
         var targetUrl = track.PageUrl is { Length: > 0 } ? track.PageUrl : "https://suno.com";
         if (targetUrl.Length <= 512)
-            activity["buttons"] = new[] { new Dictionary<string, string> { ["label"] = "Escuchar en Suno", ["url"] = targetUrl } };
+            activity["buttons"] = new[] { new Dictionary<string, string> { ["label"] = "Abrir canción", ["url"] = targetUrl } };
 
         await SendCommandAndWaitAsync("SET_ACTIVITY",
             new Dictionary<string, object?> { ["pid"] = Environment.ProcessId, ["activity"] = activity },
@@ -66,7 +66,7 @@ public sealed class DiscordRpcClient : IAsyncDisposable
 
     private static Dictionary<string, object?> BuildAssets(TrackInfo track)
     {
-        var assets = new Dictionary<string, object?> { ["large_text"] = "Suno · aarideev | SunoSync" };
+        var assets = new Dictionary<string, object?> { ["large_text"] = Limit($"{track.Title} · {track.Artist}", 128) };
         // Discord accepts publicly reachable external HTTPS images for large_image.
         // Keep within a conservative URL length; an overlong CDN signature should not
         // prevent the text activity itself from being published.

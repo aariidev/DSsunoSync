@@ -3,8 +3,8 @@ namespace ArideevSunoPresence;
 public sealed class TrackInfo
 {
     public bool HasTrack { get; set; }
-    public string Title { get; set; } = "Canción de Suno";
-    public string Artist { get; set; } = "Suno";
+    public string Title { get; set; } = "Canción desconocida";
+    public string Artist { get; set; } = "Artista desconocido";
     public string? CoverUrl { get; set; }
     public string? TrackId { get; set; }
     public string? SourceId { get; set; }
@@ -39,8 +39,8 @@ public sealed class TrackInfo
         return new TrackInfo
         {
             HasTrack = HasTrack,
-            Title = Clean(Title, 120, "Canción de Suno"),
-            Artist = Clean(Artist, 100, "Suno"),
+            Title = Clean(Title, 120, "Canción desconocida"),
+            Artist = Clean(Artist, 100, "Artista desconocido"),
             CoverUrl = cover,
             TrackId = Clean(TrackId, 300, ""),
             SourceId = Clean(SourceId, 64, "unknown"),

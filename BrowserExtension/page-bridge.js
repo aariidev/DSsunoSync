@@ -149,7 +149,7 @@
       || first(artistSelectors, playerRoot)
       || creator
       || first(['meta[name="author"]'])
-      || "Suno";
+      || "Artista desconocido";
 
     const songAnchor = (playerRoot !== document ? playerRoot.querySelector('a[href*="/song/"]') : null)
       || document.querySelector('a[href*="/song/"]');
@@ -166,7 +166,7 @@
     const duration = Number(activeMedia?.duration);
     const position = Number(activeMedia?.currentTime);
     const cover = getArtwork(session.metadata, playerRoot);
-    const trackTitle = hasTrack && !titleLooksGeneric ? rawTitle : (hasTrack ? "Canción de Suno" : "Esperando una canción");
+    const trackTitle = hasTrack && !titleLooksGeneric ? rawTitle : (hasTrack ? "Canción desconocida" : "Esperando una canción");
     const trackId = [
       clean(session.metadata?.title),
       clean(session.metadata?.artist),
